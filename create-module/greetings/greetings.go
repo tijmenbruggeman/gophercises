@@ -11,6 +11,17 @@ func init() {
     rand.Seed(time.Now().UnixNano())
 }
 
+func Hellos(names []string) ([]string, error) {
+    hellos := []string{}
+    for _, name := range names {
+        greeting, err := Hello(name)
+        if (err != nil) {
+            continue
+        }
+        hellos = append(hellos, greeting)
+    }
+    return hellos, nil
+}
 
 // Hello returns a greeting for the named person.
 func Hello(name string) (string, error) {
